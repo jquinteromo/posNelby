@@ -1,13 +1,6 @@
-import type { NextConfig } from "next";
-
-module.exports = {
-  experimental: {
-    middleware: true,
-  },
-}
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
