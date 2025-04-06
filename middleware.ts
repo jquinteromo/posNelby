@@ -1,28 +1,36 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
 
 export function middleware(request: NextRequest) {
-  const basicAuth = request.headers.get('authorization')
+  const authHeader = request.headers.get("authorization");
 
-  const USER = 'UserRoot'
-  const PASS = '@!3212'
 
+  const USER = process.env.AUTH_USER;
+  const PASS = process.env.AUTH_PASS;
+
+  const basicAuth = authHeader?.split(" ")[1];
   if (basicAuth) {
-    const [scheme, encoded] = basicAuth.split(' ')
-    if (scheme === 'Basic') {
-      const buffer = Buffer.from(encoded, 'base64')
-      const [user, pass] = buffer.toString().split(':')
+    const [user, password] = atob(basicAuth).split(":");
 
-      if (user === USER && pass === PASS) {
-        return NextResponse.next()
-      }
+
+    if (user === USER && password === PASS) {
+      return NextResponse.next();
     }
   }
 
-  return new Response('Auth required', {
+ 
+  return new Response("Authentication Required", {
     status: 401,
     headers: {
-      'WWW-Authenticate': 'Basic realm="Protected Area"',
+      "WWW-Authenticate": `Basic realm="Secure Area"`,
     },
-  })
+  });
 }
+
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};
+
