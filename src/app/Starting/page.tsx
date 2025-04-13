@@ -1,7 +1,7 @@
 "use client";
 
 import Topbar from "./Components/Topbar";
-import Sidebar from "./Components/Sidebar";
+// import Sidebar from "./Components/Sidebar";
 import PotsCreador from "./Components/PotsCreador";
 import Imagepots from "./Components/Cards/Imagepots";
 
@@ -87,7 +87,7 @@ export default function StartingPage() {
       <Topbar />
 
       <div className="flex flex-row w-full gap-14">
-        <Sidebar />
+        {/* <Sidebar /> */}
         <div className="w-full max-w-2xl space-y-4 p-4">
           <PotsCreador />
           <Imagepots Imagge={images} />
