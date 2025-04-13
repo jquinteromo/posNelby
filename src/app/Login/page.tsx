@@ -1,6 +1,17 @@
+
+'use client'
+
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 
 export default function LoginPage() {
+
+  const router = useRouter();
+
+  const changeRegister = ()=>{
+    router.push('/Register'); 
+  }
+
   return (
     <div className="  flex items-center flex-col h-screen  px-12 py-8">
       <div className="w-full h-18  relative">
@@ -31,25 +42,28 @@ export default function LoginPage() {
 
           <input
             placeholder="correo electrónico"
-            className="w-full max-w-sm h-10 border-b-2 border-b-neutral-300 placeholder-neutral-400"
+            className="w-full max-w-sm h-10 border-b-2 border-b-neutral-300 placeholder-neutral-400  text-black  focus:outline-none"
           />
 
           <input
             placeholder="Contraseña"
-            className="w-full max-w-sm h-10 border-b-2 border-b-neutral-300 placeholder-neutral-400"
+            className="w-full max-w-sm h-10 border-b-2 border-b-neutral-300 placeholder-neutral-400 text-black  focus:outline-none "
           />
 
           <input
             value="Iniciar Sesión"
             type="button"
-            className="w-full max-w-xs h-10 bg-gradient-to-r from-pink-500 to-indigo-600 rounded-xl"
+            className="w-full max-w-xs h-10 bg-gradient-to-r from-pink-500 to-indigo-600 rounded-xl cursor-pointer hover:opacity-75"
           />
 
           <div className="w-full max-w-sm flex justify-between">
             <h1 className="text-black text-sm">¿Aún no tienes cuenta?</h1>
-            <a className="text-purple-950 text-sm cursor-pointer">
+            
+            <a onClick={changeRegister}
+             className="text-purple-950 text-sm cursor-pointer hover:underline">
               Registrarse
             </a>
+
           </div>
         </div>
       </div>
