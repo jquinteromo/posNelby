@@ -101,7 +101,7 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("https://pos-nelby-7qou.vercel.app/"); // Dirección del backend
+const socket = io("https://posnelby-backend.onrender.com"); // Dirección del backend
 
 export default function Starting() {
   const [MessageSend, setMessageSend] = useState("");
