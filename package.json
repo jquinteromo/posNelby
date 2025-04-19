@@ -1,7 +1,7 @@
 {
   "name": "nelby-app",
   "version": "0.1.0",
-  "type": "module",
+  "type": "commonjs",
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run dev:front\" \"npm run dev:back\"",
