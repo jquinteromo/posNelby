@@ -2,43 +2,36 @@
   "compilerOptions": {
     "target": "ES6",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./src", // Esto indica que tu código fuente está en src
     "lib": [
       "dom",
-      "dom.iterable",
       "esnext"
-    ],
+    ], // Libs necesarias para el proyecto
+    "strict": true, // Activar chequeo estricto
+    "esModuleInterop": true, // Interoperabilidad de módulos
+    "module": "CommonJS", // Para Node.js
+    "moduleResolution": "node", // Resolución de módulos tipo Node.js
+    "jsx": "preserve", // Para JSX de React
+    "incremental": true, // Mejora la compilación
+    "resolveJsonModule": true, // Permite importar JSON
+    "skipLibCheck": true // Evita chequeo de las librerías externas
+    ,
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
+    ]
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/tjypes/**/*.ts",
-    "next-env.d.ts",
-    "src/**/*",
+    "src/**/*", // Incluir todos los archivos de código fuente en src
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules", // Excluir node_modules
+    "dist", // Excluir la carpeta dist generada
+    ".next" // Excluir la carpeta .next generada por Next.js
   ]
 }
