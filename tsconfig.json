@@ -6,7 +6,7 @@
     "lib": [
       "dom",
       "esnext"
-    ], // Libs necesarias para el proyecto
+    ], 
     "strict": true, // Activar chequeo estricto
     "esModuleInterop": true, // Interoperabilidad de módulos
     "module": "CommonJS", // Para Node.js
