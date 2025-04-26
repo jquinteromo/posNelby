@@ -75,7 +75,7 @@
                   />
                   <div className="w-32 h-auto flex flex-col">
                     <h1>User 22</h1>
-                    <p className="text-gray-500 font-bold" style={{ fontSize: "8px" }}>
+                    <p className="text-gray-500 font-medium" style={{ fontSize: "10px" }}>
                       Hace 30 segundos
                     </p>
                   </div>
@@ -98,8 +98,8 @@
                   </button>
                 </div>
       
-                <div className="w-full h-11 flex flex-row flex-wrap md:space-x-18 space-x-5 items-center justify-center px-2">
-                  <div className="flex flex-row items-center mt-1">
+                <div className=" mb-2 w-full h-11 flex flex-row flex-wrap md:space-x-18 space-x-5 items-center justify-center px-2">
+                  <div className=" flex flex-row items-center mt-1">
                     <Image
                       src="/Icons_Home/Icon_Like.png"
                       alt="Icon_Like"
@@ -133,7 +133,7 @@
                       width={0}
                       height={0}
                       sizes="100vw"
-                      className="w-8 h-8"
+                      className="w-8 h-7"
                     />
                     <span>Grabar</span>
                   </div>

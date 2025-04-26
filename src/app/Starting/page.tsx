@@ -6,6 +6,8 @@
 // import Imagepots from "./Components/Cards/Imagepots";
 
 // import { useEffect, useState } from "react";
+// import { useState } from "react";
+// import Topbar from "./Components/Topbar";
 
 // type CustomImage = {
 //   src: string;
@@ -97,43 +99,133 @@
 //   );
 // }
 
-// pages/index.tsx o donde lo vayas a usar
+// const Chat = () => {
+//   return (
+//     <div className="h-screen flex mt-6 flex-col max-w-xl mx-auto p-4 shadow-md border border-gray-200">
+
+//       {/* Topbar */}
+//       <div>
+//    <Topbar></Topbar>
+//       </div>
+
+//       {/* Top 5 Usuarios */}
+//       <div className="bg-gray-100 p-4 rounded-lg mt-4">
+//         <h2 className="text-xl font-semibold text-purple-700">Top 5 Usuarios</h2>
+//         <ul className="mt-2 text-sm text-gray-700">
+//           {/* Aquí irían los usuarios */}
+//           <li className="flex justify-between border-b border-gray-200 py-1">
+//             <span>Usuario</span>
+//             <span className="text-purple-600">0 mensajes</span>
+//           </li>
+//           {/* Repetir <li> para más usuarios */}
+//         </ul>
+//       </div>
+
+//       {/* Área de mensajes */}
+//       <div className="flex-1 mt-4 overflow-y-auto space-y-4 pr-1">
+//         <div className="flex justify-start">
+//           <div className="relative w-72 p-3 rounded-lg shadow bg-white text-black border border-gray-200">
+
+//             <div className="flex justify-between items-center mb-1">
+//               <p className="text-sm font-semibold text-gray-700">Juan</p>
+//               <button className="text-gray-400 hover:text-gray-600 text-xl leading-none">⋮</button>
+//             </div>
+
+//             <div className="text-sm whitespace-pre-wrap transition-all duration-300">
+//               ¡Hola! ¿Cómo estás?
+//             </div>
+
+//             {/* <button className="text-xs text-purple-600 mt-1 hover:underline">
+//               Ver más
+//             </button> */}
+
+//             <span className="text-xs text-gray-400 block mt-1">
+//               12:30 PM
+//             </span>
+
+//             <div className="mt-3 flex gap-2">
+//               <button className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1 rounded-full text-sm shadow hover:bg-purple-700 transition">
+//                 👍
+//               </button>
+//               <button className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1 rounded-full text-sm shadow hover:bg-purple-700 transition">
+//                 😊
+//               </button>
+//               <button className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1 rounded-full text-sm shadow hover:bg-purple-700 transition">
+//                 💬
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Puedes duplicar el <div> de mensaje para más mensajes */}
+//       </div>
+
+//       {/* Input fijo abajo */}
+//       <div className="mt-4">
+//         <div className="flex">
+//           <input
+//             type="text"
+//             className="flex-1 border border-gray-300 p-3 rounded-lg mr-2 text-sm"
+//             placeholder="Escribe un mensaje..."
+//           />
+//           <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+//             Enviar
+//           </button>
+//         </div>
+//       </div>
+
+//     </div>
+//   );
+// };
+
+// export default Chat;
+
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
 const socket = io("https://posnelby-backend.onrender.com"); // Dirección del backend
+// const socket = io("http://localhost:3001");
+
 
 export default function Starting() {
   const [MessageSend, setMessageSend] = useState("");
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<{ message: string, userId: string }[]>([]);
+  const [IdUser, setIdUser] =  useState<string>("");
+  
 
   useEffect(() => {
     socket.on("connect", () => {
       console.log("Conectado al servidor de Socket.IO ✅");
     });
 
-    socket.on("receiveMessage", (message: string) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
+    socket.on("receiveMessage", (data) => {
+      setMessages((prevMessages) => [...prevMessages, { message: data.message, userId: data.userId }]);
+      
+      // console.log("Esto me llego del backend :"+IdUser)
     });
 
-    return () => {
-      socket.off("receiveMessage");
-    };
+
+    const generatedId = `user-${Math.random().toString(36).substring(2, 15)}`;
+    setIdUser(generatedId);
+    console.log("Este es el id del usuario:", generatedId); // Imprimimos el valor generado
 
     return () => {
       socket.disconnect();
     };
   }, []);
 
+
   const goku = () => {
     if (MessageSend.trim() !== "") {
-      socket.emit("sendMessage", MessageSend); // Envia el mensaje al servidor
+      socket.emit("sendMessage", MessageSend,IdUser); // Envia el mensaje al servidor
       setMessageSend(""); // Limpia el input si quieres
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+
+
       <div className="flex flex-col space-y-4">
         <input
           type="text"
@@ -150,9 +242,45 @@ export default function Starting() {
         </button>
 
         {messages.map((msg, i) => (
-          <p key={i}>{msg}</p>
+          <div key={i} className="flex-1 mt-4 overflow-y-auto space-y-4 pr-1">
+            <div className="flex justify-start">
+              <div className={`relative w-72 p-3 rounded-lg shadow  text-black border border-gray-200 ${msg.userId===IdUser ? 'bg-green-500 ':'bg-blue-500'}`}>
+                <div className="flex justify-between items-center mb-1">
+                  <p className="text-sm font-semibold text-gray-700">Juan</p>
+                  <button className="text-gray-400 hover:text-gray-600 text-xl leading-none">
+                    ⋮
+                  </button>
+                </div>
+
+                <div className="text-sm whitespace-pre-wrap transition-all duration-300">
+                  {msg.message}
+                </div>
+
+                {/* <button className="text-xs text-purple-600 mt-1 hover:underline">
+              Ver más
+            </button> */}
+
+                <span className="text-xs text-gray-400 block mt-1">
+                  12:30 PM
+                </span>
+
+                <div className="mt-3 flex gap-2">
+                  <button className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1 rounded-full text-sm shadow hover:bg-purple-700 transition">
+                    👍
+                  </button>
+                  <button className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1 rounded-full text-sm shadow hover:bg-purple-700 transition">
+                    😊
+                  </button>
+                  <button className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1 rounded-full text-sm shadow hover:bg-purple-700 transition">
+                    💬
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Puedes duplicar el <div> de mensaje para más mensajes */}
+          </div>
         ))}
-        
       </div>
     </div>
   );

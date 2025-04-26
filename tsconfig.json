@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "outDir": "./dist",
-    "rootDir": "./src", // Esto indica que tu código fuente está en src
+   "rootDir": "c:/PosNelby/nelby-app",
     "lib": [
       "dom",
       "esnext"
@@ -28,7 +28,7 @@
   "include": [
     "src/**/*", // Incluir todos los archivos de código fuente en src
     ".next/types/**/*.ts"
-  ],
+, "next.config.ts"  ],
   "exclude": [
     "node_modules", // Excluir node_modules
     "dist", // Excluir la carpeta dist generada

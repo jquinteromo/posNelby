@@ -7,7 +7,7 @@ export default function Sidebar() {
   // const router = useRouter();
 
   return (
-    <div className="flex flex-col gap-2 w-96 px-12 h-auto bg-gray-100">
+    <div className="hidden md:block flex flex-col gap-2 w-96 px-12 h-auto bg-gray-100">
   
       <div className="text-gray-600 py-6">
 
