@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES6",                           // Especifica que el código de salida debe ser compatible con ES6
-    "outDir": "./dist",                         // Define el directorio de salida para los archivos compilados
-    "typeRoots": ["node_modules/@types"],       // Indica dónde TypeScript debe buscar los tipos personalizados
-    "types": ["node"],                          // Especifica los tipos a incluir, en este caso Node.js
-    "rootDir": "c:/PosNelby/nelby-app/src",     // La raíz del código fuente, debe apuntar a 'src' para incluir todo el código fuente
+    "target": "ES6",
+    "outDir": "./dist",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"],
+    "rootDir": "./src",                          // Cambié esto para asegurarme que está apuntando correctamente a la carpeta src
     "lib": [
-      "dom",                                    // Incluye las definiciones para el entorno del DOM
-      "esnext"                                  // Incluye las últimas definiciones de ECMAScript
+      "dom",
+      "esnext"
     ],
-    "strict": true,                             // Habilita el modo estricto de TypeScript
-    "esModuleInterop": true,                    // Permite importar módulos CommonJS y ES6 sin problemas
-    "module": "CommonJS",                       // Configura el módulo para Node.js (CommonJS)
-    "moduleResolution": "node",                 // Utiliza la resolución de módulos tipo Node.js
-    "jsx": "preserve",                         // Permite mantener JSX sin transformarlo (útil para React)
-    "incremental": true,                        // Habilita la compilación incremental para mejorar el rendimiento
-    "resolveJsonModule": true,                  // Permite importar archivos JSON como módulos
-    "skipLibCheck": true,                       // Omite la comprobación de tipos en las librerías
-    "allowJs": true,                            // Permite compilar archivos JavaScript también
-    "noEmit": true,                             // No emite archivos, solo verifica el tipo
-    "isolatedModules": true,                    // Asegura que cada archivo sea un módulo aislado
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "incremental": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true,
     "plugins": [
       {
         "name": "next"
@@ -27,13 +27,13 @@
     ]
   },
   "include": [
-    "src/**/*",                                 // Incluir todos los archivos de código fuente dentro de la carpeta src
-    ".next/types/**/*.ts"                       // Incluir tipos generados por Next.js
+    "src/**/*",                                 // Asegúrate de incluir todos los archivos dentro de src
+    ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",                             // Excluir node_modules
-    "dist",                                     // Excluir la carpeta dist generada
-    ".next",                                    // Excluir la carpeta .next generada por Next.js
-    "next.config.ts"                             // Excluir el archivo de configuración de Next.js
+    "node_modules",
+    "dist",
+    ".next",
+    "next.config.ts"                             // Asegúrate de excluir el archivo de configuración de Next.js
   ]
 }
