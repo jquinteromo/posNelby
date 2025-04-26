@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "ES6",
     "outDir": "./dist",
-   "rootDir": "c:/PosNelby/nelby-app",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"],
+   "rootDir": "c:/PosNelby/nelby-app/src",
     "lib": [
       "dom",
       "esnext"
@@ -28,10 +30,11 @@
   "include": [
     "src/**/*", // Incluir todos los archivos de código fuente en src
     ".next/types/**/*.ts"
-, "next.config.ts"  ],
+  ],
   "exclude": [
     "node_modules", // Excluir node_modules
     "dist", // Excluir la carpeta dist generada
-    ".next" // Excluir la carpeta .next generada por Next.js
+    ".next" ,// Excluir la carpeta .next generada por Next.js
+    "next.config.ts"
   ]
 }
