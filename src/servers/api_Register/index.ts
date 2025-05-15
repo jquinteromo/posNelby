@@ -40,7 +40,7 @@ connectToMongoDB();
 app.post(
   "/api/register",
   async (req: Request, res: Response): Promise<void> => {
-    console.log("Conectado a MongoDB");
+    console.log("Conectad a MongoDB");
 
     const { email, password, nameUs } = req.body;
 

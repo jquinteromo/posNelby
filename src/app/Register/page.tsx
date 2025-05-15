@@ -58,7 +58,7 @@ export default function RegisterPage() {
     } else if (data.password.length < 6) {
       errors.password = "La contraseña debe tener al menos 6 caracteres";
     } else if (!/(?=.*[A-Z])/.test(data.password)) {
-      errors.password = "La contraseña debe tener al menos una letra mayúscula";
+      errors.password = "La contraseña debe tener al menos una letra mayuscula";
     }
 
     return errors;
@@ -118,7 +118,6 @@ export default function RegisterPage() {
           ...prev,
           email: data.message,
         }));
-        
       } else {
         console.error("otro error", error);
       }
@@ -132,163 +131,145 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex justify-center items-center  h-screen px-12 py-8">
-      <div className="flex flex-col w-lg h-full ">
-        <div className="flex flex-row items-center justify-center w-full -950 h-14">
+    <div className="flex justify-center items-center h-screen px-12 py-8 ">
+      <div className="flex flex-col w-96 h-full    gap-5">
+        <div className="flex flex-row items-center  justify-center w-full h-14">
           <Image
             src="/Icons_login/iconNelby.png"
             alt="Icono de login"
-            width={70}
-            height={46}
+            width={79}
+            height={76}
             className="object-contain"
           />
           <h1 className="text-3xl">elby</h1>
         </div>
 
-        <div className=" flex flex-col md:flex-row w-full flex-1  mt-5 ">
-          <div className="flex flex-col gap-12 justify-center items-center  text-white p-8 shadow-md flex-1">
-            <h1 className="text-left text-2xl text-black mr-auto lg:ml-7 ml-0">
-              Crea tu cuenta!
-            </h1>
+        <div className="flex flex-col w-full mt-5 gap-10 pb-10 ">
+          <h1 className="text-2xl text-black">Crea tu cuenta!</h1>
 
-            <div className="w-full max-w-sm relative">
-              <input
-                onChange={(e) => SubmitForm(e.target.name, e.target.value)}
-                type="text"
-                name="nameUs"
-                placeholder="Nombre Completo"
-                className="w-full max-w-sm h-10 border-b-2 border-b-neutral-300 placeholder-neutral-400 text-black  focus:outline-none"
-              />
-              {ErrorMessages.nameUs && (
-                <div className=" flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 9v2m0 4h.01M12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z" />
-                  </svg>
-                  <p>{ErrorMessages.nameUs}</p>
-                </div>
-              )}
-            </div>
-
-            <div className="w-full max-w-sm relative">
-              <input
-                onChange={(e) => {
-                  const name = e.target.name;
-                  const value = e.target.value;
-                  SubmitForm(name, value);
-                }}
-                type="email"
-                name="email"
-                placeholder="Correo electrónico o número"
-                className="w-full max-w-sm h-10 border-b-2 border-b-neutral-300 placeholder-neutral-400 text-black  focus:outline-none"
-              />
-              {ErrorMessages.email && (
-                <div className=" flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 9v2m0 4h.01M12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z" />
-                  </svg>
-                  <p>{ErrorMessages.email}</p>
-                </div>
-              )}
-            </div>
-
-            <div className="w-full max-w-sm relative">
-              <input
-                onChange={(e) => {
-                  const name = e.target.name;
-                  const value = e.target.value;
-                  SubmitForm(name, value);
-                }}
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                className="w-full max-w-sm h-10 border-b-2 border-b-neutral-300 placeholder-neutral-400 text-black  focus:outline-none"
-              />
-              {ErrorMessages.password && (
-                <div className=" flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 9v2m0 4h.01M12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z" />
-                  </svg>
-                  <p>{ErrorMessages.password}</p>
-                </div>
-              )}
-            </div>
-            <h1 className="text-black mr-auto lg:ml-7 ml-0">
-              {" "}
-              Elige una foto (opcional)
-            </h1>
-
-            <div className="flex flex-row items-center gap-7 w-full h-12 max-w-sm ">
-              <div className="w-16 h-16 sm:w-16 sm:h-16 rounded-full overflow-hidden relative">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 to-indigo-600  -z-10"></div>
-                <div className="w-16 h-16 rounded-full overflow-hidden relative">
-  <Image
-    src={Preview ? Preview : "/Icons_Register/Icon_porfil.png"}
-    alt="Avatar"
-    width={64} 
-    height={64}
-    className="object-cover"
-  />
-</div>
+          <div className="w-full max-w-sm relative">
+            <input
+              onChange={(e) => SubmitForm(e.target.name, e.target.value)}
+              type="text"
+              name="nameUs"
+              placeholder="Nombre Completo"
+              className="w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400 text-black focus:outline-none"
+            />
+            {ErrorMessages.nameUs && (
+              <div className="flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 9v2m0 4h.01M12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z" />
+                </svg>
+                <p>{ErrorMessages.nameUs}</p>
               </div>
+            )}
+          </div>
 
-              <input
-                ref={fileInputRef}
-                type="file"
-                className="hidden"
-                accept="image/*"
-                onChange={(e) =>
-                  e.target.files?.[0] && udtImgPorf(e.target.files[0])
-                }
-              ></input>
+          <div className="w-full max-w-sm relative">
+            <input
+              onChange={(e) => SubmitForm(e.target.name, e.target.value)}
+              type="email"
+              name="email"
+              placeholder="Correo electrónico o número"
+              className="w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400 text-black focus:outline-none"
+            />
+            {ErrorMessages.email && (
+              <div className="flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 9v2m0 4h.01M12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z" />
+                </svg>
+                <p>{ErrorMessages.email}</p>
+              </div>
+            )}
+          </div>
 
-              <input
-                value={"Subir imagen"}
-                className="w-28 h-6 text-sm rounded bg-gradient-to-r from-pink-500 to-indigo-600 rounded-tr-sm cursor-pointer hover:opacity-75"
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-              ></input>
+          <div className="w-full max-w-sm relative">
+            <input
+              onChange={(e) => SubmitForm(e.target.name, e.target.value)}
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              className="w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400 text-black focus:outline-none"
+            />
+            {ErrorMessages.password && (
+              <div className="flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 9v2m0 4h.01M12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z" />
+                </svg>
+                <p>{ErrorMessages.password}</p>
+              </div>
+            )}
+          </div>
+
+          <h1 className="text-black">Elige una foto (opcional)</h1>
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-full overflow-hidden relative">
+              <Image
+                src={Preview ?? "/Icons_Register/Icon_porfil.png"}
+                alt="Avatar"
+                width={96}
+                height={96}
+                className="object-cover"
+              />
             </div>
 
             <input
-              onClick={handleSubmit}
-              value="Registrate"
-              type="button"
-              className="w-full max-w-xs h-10 bg-gradient-to-r from-pink-500 to-indigo-600 rounded-xl cursor-pointer hover:opacity-75"
+              ref={fileInputRef}
+              type="file"
+              className="hidden"
+              accept="image/*"
+              onChange={(e) =>
+                e.target.files?.[0] && udtImgPorf(e.target.files[0])
+              }
             />
 
-            <div className="w-full max-w-sm flex justify-between">
-              <h1 className="text-black text-sm">¿Ya tienes cuenta?:</h1>
-              <a
-                onClick={changeLogin}
-                className="text-purple-950 text-sm cursor-pointer hover:underline"
-              >
-                Inicia Sesión
-              </a>
-            </div>
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              className="px-3 py-1 bg-gradient-to-r from-pink-500 to-indigo-600 text-white rounded hover:opacity-75"
+            >
+              Subir imagen
+            </button>
+          </div>
+
+          <button
+            onClick={handleSubmit}
+            className="w-full mt-4 bg-gradient-to-r from-pink-500 to-indigo-600 text-white py-2 rounded-xl hover:opacity-75"
+          >
+            Registrate
+          </button>
+
+          <div className="flex justify-between mt-4 text-sm text-black">
+            <p>¿Ya tienes cuenta?:</p>
+            <a
+              onClick={changeLogin}
+              className="text-purple-950 cursor-pointer hover:underline"
+            >
+              Inicia Sesión
+            </a>
           </div>
         </div>
       </div>
