@@ -244,14 +244,15 @@ export default function RegisterPage() {
             <div className="flex flex-row items-center gap-7 w-full h-12 max-w-sm ">
               <div className="w-16 h-16 sm:w-16 sm:h-16 rounded-full overflow-hidden relative">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 to-indigo-600  -z-10"></div>
-                <div className="w-full h-full border-2 border-transparent rounded-full overflow-hidden relative">
-                  <Image
-                    src={Preview ? Preview : "/Icons_Register/Icon_porfil.png"}
-                    alt="Avatar"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
+                <div className="w-16 h-16 rounded-full overflow-hidden relative">
+  <Image
+    src={Preview ? Preview : "/Icons_Register/Icon_porfil.png"}
+    alt="Avatar"
+    width={64} 
+    height={64}
+    className="object-cover"
+  />
+</div>
               </div>
 
               <input
