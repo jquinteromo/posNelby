@@ -63,7 +63,7 @@ export default function LoginPage() {
 
     try {
       const response = await axios.post(
-"https://posnelby-backend.onrender.com/api/register",
+"https://posnelby-backend.onrender.com//api/register",
         // "http://localhost:3002/api/auth",
         formData,
         {
