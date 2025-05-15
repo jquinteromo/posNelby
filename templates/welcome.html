@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Nelby</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Si prefieres algo más moderno, podrías probar con 'Poppins' o 'Roboto' */
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .content {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .cta {
+            display: block;
+            margin: 20px 0;
+            text-align: center;
+        }
+           .cta a {
+            background: linear-gradient(to right, #f472b6, #6366f1); /* Gradiente de rosa a índigo */
+            color: #ffffff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .cta a:hover {
+            background: linear-gradient(to right, #ec4899, #4c51bf); /* Gradiente de rosa a índigo más oscuro */
+            transform: scale(1.05); /* Efecto de aumento en el tamaño del botón */
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 30px;
+        }
+        .footer a {
+            color: #4A90E2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{imageUrl}}" alt="Icono de login" style="max-width: 150px; display: block; margin: 0 auto;">
+            <h2>¡Bienvenido a Nelby, {{nameUs}}!</h2>
+        </div>
+        <div class="content">
+            <p>Gracias por registrarte en Nelby, la red social de nueva generación, diseñada para ofrecerte la mejor experiencia. Por favor, usa el siguiente código de verificación para activar tu cuenta:</p>
+            <h3 style="text-align: center;">{{verificationCode}}</h3>
+            <p>Si no has solicitado este registro, ignora este mensaje.</p>
+        </div>
+        <div class="cta">
+            <a href="https://nelby.com/verify">Verificar mi cuenta</a>
+        </div>
+        <div class="footer">
+            <p>Si tienes alguna pregunta o necesitas asistencia, por favor contáctanos:</p>
+            <p><strong>Nelby Support</strong><br>service.nelby@gmail.com</p>
+        </div>
+    </div>
+</body>
+</html>

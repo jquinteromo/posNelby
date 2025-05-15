@@ -4,7 +4,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.pexels.com','i.pravatar.cc'], // 👈 SOLO esto
+    domains: ['images.pexels.com','i.pravatar.cc','via.placeholder.com'],
+   // 👈 SOLO esto
     
   },
 };

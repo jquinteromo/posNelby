@@ -62,7 +62,7 @@
         return (
           <div className="space-y-4">
             {imagesToShow.map((Imagee, index) => (
-              <div key={index} className="h-auto bg-white rounded-2xl shadow p-8 space-y-7">
+              <div key={index} className="   shadow-lg h-auto bg-white rounded-2xl p-8 space-y-7">
                 <div className="w-full h-auto flex flex-row gap-2">
                   <Image
                     src="/Icons_Register/Icon_Porfil.png"

@@ -2,16 +2,18 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Topbar() {
   const [showExtraIcons, setShowExtraIcons] = useState(false);
+  const router = useRouter()
 
   const goku = () => {
-    alert("goku");
+    router.push('/Starting/Components/Components_Topbar/Global_chat')
   };
 
   return (
-    <div className="flex items-center justify-between px-4 absolute top-0 left-0  w-full h-16 bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700">
+    <div className="  py-4 bg-black shadow-md  z-50 flex items-center justify-between px-4 absolute top-0 left-0  w-full h-16 ">
       {/* Izquierda: Icono principal */}
       <Image
         src="/Icons_Home/Icons_Topbar/nelbyIcon2.png"
@@ -30,6 +32,7 @@ export default function Topbar() {
             height={0}
             sizes="100vw"
             className="w-6 h-6"
+            onClick={goku}
           />
 
           <Image
@@ -80,7 +83,6 @@ export default function Topbar() {
         height={0}
         sizes="100vw"
         className="w-6 h-6 mt-1"
-        onClick={goku}
       />
 
       {/* Botón para mostrar más íconos */}
