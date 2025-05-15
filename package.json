@@ -4,9 +4,9 @@
   "type": "commonjs",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev:front\"  \"npm run dev:api_Register\" \"npm run dev:api\"   ",
+    "dev": "concurrently \"npm run dev:front\" \"npm run dev:api_Register\" \"npm run dev:api\"",
     "dev:front": "next dev",
-    "dev:backends": "concurrently  \"npm run dev:api_Register\" \"npm run dev:api\"  ", 
+    "dev:backends": "concurrently \"npm run dev:api_Register\" \"npm run dev:api\"",
     "dev:socket": "ts-node src/servers/socket/index.ts",
     "dev:api": "ts-node src/servers/api/index.ts",
     "dev:api_Register": "ts-node src/servers/api_Register/index.ts",
@@ -15,9 +15,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-spring/three": "^9.7.5",
-    "@react-three/drei": "^10.0.7",
-    "@react-three/fiber": "^9.1.2",
     "@types/express": "^4.17.21",
     "@vercel/analytics": "^1.5.0",
     "axios": "^1.9.0",
@@ -30,24 +27,23 @@
     "handlebars": "^4.7.8",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.16.0",
-    "next": "15.2.4",
+    "next": "^13.4.12",
     "nodemailer": "^7.0.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "socket.io-client": "^4.8.1",
-    "three": "^0.176.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.17.32",
     "@types/nodemailer": "^6.4.17",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@types/socket.io": "^3.0.1",
     "concurrently": "^9.1.2",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4",
+    "eslint-config-next": "^13.4.12",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
