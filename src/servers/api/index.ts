@@ -4,15 +4,17 @@ import cors from 'cors';
 import http from 'http';
 import dotenv from 'dotenv';
 
+
+
 dotenv.config();
 
 const app = express();
-
 app.use(cors({
   origin: 'https://pos-nelby.vercel.app',
   methods: ['GET', 'POST'],
   credentials: true,
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
