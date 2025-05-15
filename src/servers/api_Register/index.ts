@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://pos-nelby-7qou.vercel.app",
+    origin: "https://pos-nelby.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
   })
