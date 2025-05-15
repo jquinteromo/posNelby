@@ -58,7 +58,7 @@ export default function RegisterPage() {
     } else if (data.password.length < 6) {
       errors.password = "La contraseña debe tener al menos 6 caracteres";
     } else if (!/(?=.*[A-Z])/.test(data.password)) {
-      errors.password = "La contraseña debe tener al menos una letra mayúscula";
+      errors.password = "La contraseña debe tener al menos una letra mayuscula";
     }
 
     return errors;
