@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:front\" \"npm run dev:api_Register\" \"npm run dev:api\"",
     "dev:front": "next dev",
-    "dev:backends": "concurrently \"npm run dev:api_Register\" \"npm run dev:api\"",
     "dev:socket": "ts-node src/servers/socket/index.ts",
     "dev:api": "ts-node src/servers/api/index.ts",
     "dev:api_Register": "ts-node src/servers/api_Register/index.ts",

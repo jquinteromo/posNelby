@@ -81,9 +81,13 @@ export default function RegisterPage() {
       ...formData,
       [name]: value,
     });
+    const erros = validateAllFields({... formData, [name]:value})
 
-    setErrorMessages(validateAllFields({ ...formData, [name]: value }));
-  };
+   setErrorMessages({
+  ...ErrorMessages, // Mantiene los errores existentes
+  [name]: erros[name as keyof FormDataType], // Solo actualiza el error del campo modificado
+});
+  }
 
   useEffect(() => {
     console.log(ErrorMessages);
@@ -102,6 +106,7 @@ export default function RegisterPage() {
     try {
       const response = await axios.post(
         "https://posnelby-backend.onrender.com/api/register",
+        // "http://localhost:3003/api/register",
         formData,
         {
           headers: {
