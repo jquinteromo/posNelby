@@ -42,8 +42,8 @@ export default function VerificationCodePage() {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        // "https://posnelby-backend.onrender.com/api/register",
-        "http://localhost:3003/api/verify",
+        "https://posnelby-backend.onrender.com/api/register",
+        // "http://localhost:3003/api/verify",
            { code: code.join("") },
         {
           headers: {

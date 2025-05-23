@@ -105,8 +105,8 @@ export default function RegisterPage() {
 
     try {
       const response = await axios.post(
-        // "https://posnelby-backend.onrender.com/api/register",
-        "http://localhost:3003/api/register",
+        "https://posnelby-backend.onrender.com/api/register",
+        // "http://localhost:3003/api/register",
         formData,
         {
           headers: {
