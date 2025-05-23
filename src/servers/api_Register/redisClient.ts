@@ -9,7 +9,8 @@ const redisClient = new Redis({
   port: Number(process.env.REDIS_PORT),
   username: process.env.REDIS_USERNAME || undefined,
   password: process.env.REDIS_PASSWORD || undefined,
-  tls: process.env.REDIS_TLS === "true" ? {} : undefined,
+  tls: process.env.REDIS_TLS?.trim() === "true" ? { rejectUnauthorized: false } : undefined,
+
 });
 
 redisClient.on("connect", () => {
