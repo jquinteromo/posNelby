@@ -172,7 +172,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000", // Origen permitido
-      "http://192.168.56.1:3000"
+      "http://192.168.56.1:3000",
+       "https://pos-nelby-7qou.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
