@@ -81,13 +81,13 @@ export default function RegisterPage() {
       ...formData,
       [name]: value,
     });
-    const erros = validateAllFields({... formData, [name]:value})
+    const erros = validateAllFields({ ...formData, [name]: value });
 
-   setErrorMessages({
-  ...ErrorMessages, // Mantiene los errores existentes
-  [name]: erros[name as keyof FormDataType], // Solo actualiza el error del campo modificado
-});
-  }
+    setErrorMessages({
+      ...ErrorMessages, // Mantiene los errores existentes
+      [name]: erros[name as keyof FormDataType], // Solo actualiza el error del campo modificado
+    });
+  };
 
   useEffect(() => {
     console.log(ErrorMessages);
@@ -105,13 +105,14 @@ export default function RegisterPage() {
 
     try {
       const response = await axios.post(
-        "https://posnelby-backend.onrender.com/api/register",
-        // "http://localhost:3003/api/register",
+        // "https://posnelby-backend.onrender.com/api/register",
+        "http://localhost:3003/api/register",
         formData,
         {
           headers: {
             "Content-Type": "application/json", // Asegúrate de que tu backend esté esperando JSON
           },
+          
         }
       );
       console.log("Respuesta del servidor:", response.data);
@@ -129,6 +130,9 @@ export default function RegisterPage() {
 
       console.error("Error al iniciar sesión", error);
     }
+
+
+    router.push("/Register/RutesForbackend");
   };
 
   const changeLogin = () => {
@@ -158,7 +162,7 @@ export default function RegisterPage() {
               type="text"
               name="nameUs"
               placeholder="Nombre Completo"
-              className="w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400 text-black focus:outline-none"
+              className="text-neutral-600 w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400  focus:outline-none"
             />
             {ErrorMessages.nameUs && (
               <div className="flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
@@ -184,7 +188,7 @@ export default function RegisterPage() {
               type="email"
               name="email"
               placeholder="Correo electrónico o número"
-              className="w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400 text-black focus:outline-none"
+              className="text-neutral-600 w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400 focus:outline-none"
             />
             {ErrorMessages.email && (
               <div className="flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">
@@ -210,7 +214,7 @@ export default function RegisterPage() {
               type="password"
               name="password"
               placeholder="Contraseña"
-              className="w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400 text-black focus:outline-none"
+              className="text-neutral-600 w-full h-10 border-b-2 border-neutral-300 placeholder-neutral-400  focus:outline-none"
             />
             {ErrorMessages.password && (
               <div className="flex items-center gap-2 mt-1 text-red-500 text-sm animate-pulse">

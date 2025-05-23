@@ -29,7 +29,7 @@
   "include": [
     "src/**/*",                                 // Asegúrate de incluir todos los archivos dentro de src
     ".next/types/**/*.ts"
-  ],
+, "test-redis.js"  ],
   "exclude": [
     "node_modules",
     "dist",

@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         muthiara: ['"Muthiara"', 'sans-serif'],
+
       },
     },
   },

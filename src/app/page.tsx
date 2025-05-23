@@ -4,7 +4,7 @@
 // import LoginPage from './Login/page';
 import LoginPage from './Login/page';
 import RegisterPage from './Register/page';
-import VerificationCodePage from './Starting/Components/Cards/Apkpots';
+import VerificationCodePage from './Register/RutesForbackend/page';
 // import VerificationCodePage from './Starting/Components/Cards/Apkpots';
 // import RegisterPage from './Register/page';
 

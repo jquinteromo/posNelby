@@ -10,7 +10,8 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'https://pos-nelby.vercel.app',
+  // origin: 'https://pos-nelby.vercel.app',
+    origin: 'http://localhost:3000',
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -19,7 +20,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const uri = process.env.MONGODB_BATAUTO_URI!;
+const uri = process.env.MONGODB_NELBY_URI!;
 const client = new MongoClient(uri);
 
 app.post('/api/auth', async (req: Request, res: Response):Promise<void> => {
