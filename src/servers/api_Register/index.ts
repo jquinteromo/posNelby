@@ -193,6 +193,19 @@ redisClient.ping().then(() => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
+
+
+app.get("/ip", async (req, res) => {
+  const response = await fetch("https://api.ipify.org?format=json");
+  const data = await response.json();
+  console.log("📡 IP pública del servidor Render:", data.ip);
+  res.json(data);
+});
+
 // Rutas
 app.use("/api/register", registerRoute);
 app.use("/api/verify", verifyCodeRoute);
