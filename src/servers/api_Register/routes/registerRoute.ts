@@ -22,12 +22,12 @@ router.post("/", async (req, res) => {
 
   // Generar OTP y enviar correo
   const otp = generateOtp();
-  await enqueueEmail(email, "Código de Verificación", `<p>Tu código es: ${otp}</p>`);
+  await enqueueEmail(email, otp, nameUs);
 
   // Registrar usuario (no verificado)
   await createUser({ email, password, nameUs, verified: false });
 
   res.status(201).json({ message: "Usuario registrado y correo de verificación enviado." });
-});
+}); 
 
 export default router;
