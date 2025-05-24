@@ -161,7 +161,7 @@ import redisClient from "./redisClient";
 import client from "./db/mongoClient";
 import registerRoute from "./routes/registerRoute";
 import verifyCodeRoute from "./routes/verifyCodeRoute" 
-import "../workers/emailWorker";
+import "./workers/emailWorker";
 
 
 
