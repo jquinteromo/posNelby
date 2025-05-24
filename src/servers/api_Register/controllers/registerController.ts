@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { createUser, getUserByEmail } from "../services/userService";
 import { generateOtp } from "../services/otpService";
-import { enqueueEmail } from "../workers/emailWorker";
+import { enqueueEmail } from "../workers/emailQueue"; // ✅
 
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
   const { email, password, nameUs } = req.body;

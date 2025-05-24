@@ -1,28 +1,31 @@
+// src/servers/api_Register/workers/emailWorker.ts
 import { Worker, Job } from "bullmq";
 import { sendOtpEmail } from "../services/emailService";
+import dotenv from "dotenv";
 
-// Tipo explícito de datos del trabajo
+dotenv.config();
+
 type EmailJobData = {
   email: string;
   otp: string;
   nameUs: string;
 };
 
-// Worker que procesa trabajos de la cola "emailQueue"
+const connection = {
+  host: process.env.REDIS_HOST,
+  port: Number(process.env.REDIS_PORT),
+  username: process.env.REDIS_USERNAME,
+  password: process.env.REDIS_PASSWORD,
+  tls: process.env.REDIS_TLS === "true" ? {} : undefined,
+  maxRetriesPerRequest: null,
+};
+
 const emailWorker = new Worker<EmailJobData>(
   "emailQueue",
   async (job: Job<EmailJobData>) => {
     const { email, otp, nameUs } = job.data;
     await sendOtpEmail(email, otp, nameUs);
   },
-  {
-    connection: {
-      host: process.env.REDIS_HOST,
-      port: Number(process.env.REDIS_PORT),
-      username: process.env.REDIS_USERNAME,
-      password: process.env.REDIS_PASSWORD,
-      tls: process.env.REDIS_TLS === "true" ? {} : undefined,
-      maxRetriesPerRequest: null,
-    },
-  }
+  { connection }
 );
+
