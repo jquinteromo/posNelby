@@ -15,5 +15,6 @@ const connection = {
 export const emailQueue = new Queue("emailQueue", { connection });
 
 export const enqueueEmail = async (email: string, otp: string, nameUs: string) => {
+    console.log("📨 Encolando correo a:", email);
   await emailQueue.add("send_email", { email, otp, nameUs });
 };

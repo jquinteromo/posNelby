@@ -21,8 +21,10 @@ const connection = {
 };
 
 const emailWorker = new Worker<EmailJobData>(
+  
   "emailQueue",
   async (job: Job<EmailJobData>) => {
+      console.log("📬 Procesando trabajo:", job.data);
     const { email, otp, nameUs } = job.data;
     await sendOtpEmail(email, otp, nameUs);
   },
