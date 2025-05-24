@@ -1,4 +1,4 @@
-import { Queue, Worker, QueueEvents } from "bullmq";
+import { Worker,Queue } from "bullmq";
 import { sendOtpEmail } from "../services/emailService";
 
 export const emailQueue = new Queue("emailQueue", {

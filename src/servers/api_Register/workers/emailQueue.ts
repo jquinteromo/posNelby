@@ -1,10 +1,20 @@
-// src/servers/api_Register/workers/emailQueue.ts
-import Queue from "bull";
+import { Queue } from "bullmq";
+import dotenv from "dotenv";
 
-// Configuración de la cola de correos
-export const emailQueue = new Queue("emailQueue");
+dotenv.config();
 
-// Función para agregar correos a la cola
-export const enqueueEmail = async (email: string, subject: string, html: string) => {
-  await emailQueue.add({ email, subject, html });
+const connection = {
+  host: process.env.REDIS_HOST,
+  port: Number(process.env.REDIS_PORT),
+  username: process.env.REDIS_USERNAME,
+  password: process.env.REDIS_PASSWORD,
+  tls: process.env.REDIS_TLS === "true" ? {} : undefined,
+};
+
+// Crear la cola de correos
+export const emailQueue = new Queue("emailQueue", { connection });
+
+// Agregar un trabajo a la cola
+export const enqueueEmail = async (email: string, otp: string, nameUs: string) => {
+  await emailQueue.add("send_email", { email, otp, nameUs });
 };
